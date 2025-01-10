@@ -10,12 +10,16 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-        
+            Text("Counter")
+                .font(.largeTitle)
             
+            Button("Increment")
+             Counter += 1
+                
+            }
+            }
         }
-        
-    }
-}
+    
 
 #Preview {
     ContentView()
