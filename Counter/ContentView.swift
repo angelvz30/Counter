@@ -11,6 +11,7 @@ struct ContentView: View {
     @State var Counter: Int = 0
     @State var counterDisplay: String = "0"
     @State var showingReset = false
+    @State var confirmReset = false
     var body: some View {
         NavigationStack{
             VStack {
@@ -21,15 +22,32 @@ struct ContentView: View {
                 Button("Increment") {
                     Counter += 1
                     counterDisplay = String(Counter)
-                    
+                    }
                 }
                 Button("Reset") {
-                    
+                    showingReset = true
                 }
             }
-        }
-    }
-}
+            .navigationDestination(isPresented: $showingReset) {
+                resetView()
+                
+                Button("confirmReset")
+                {
+                    confirmReset = true
+                }
+                    .sheet(isPresented: $confirmReset) {
+                        resetView()
+                }
+                    
+                    
+                    }
+                }
+            }
+                }
+
+
+
+
 #Preview {
     ContentView()
 }
