@@ -31,19 +31,24 @@ struct ContentView: View {
             .navigationDestination(isPresented: $showingReset) {
                 resetView()
                 
-                Button("confirmReset")
-                {
+                Button("confirmReset") {
                     confirmReset = true
                 }
-                    .sheet(isPresented: $confirmReset) {
-                        resetView()
-                }
+            .navigationDestination(isPresented: $confirmReset){
                     
+                resetView()
+                }
+            {
+                    
+                }
+                {
+                    
+                }
                     
                     }
                 }
             }
-                }
+
 
 
 
