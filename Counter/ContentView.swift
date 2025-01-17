@@ -8,46 +8,29 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var Counter: Int = 0
-    @State var counterDisplay: String = "0"
+    @State var Counter: Int = 0 //current count
+    @State var counterDisplay: String = "0" //Display counter
     @State var showingReset = false
     @State var confirmReset = false
-    var body: some View {
-        NavigationStack{
-            VStack {
-                
+    var body: some View { //entire view
+        NavigationStack{ //Navigation stack view
+            VStack { //VStack view
                 Text(counterDisplay)
                     .font(.largeTitle)
-                
-                Button("Increment") {
+                Button("Increment") { //Counter button
                     Counter += 1
                     counterDisplay = String(Counter)
-                    }
-                }
-                Button("Reset") {
+                } // Close counter button
+                Button("Reset") { //Reset counter button
                     showingReset = true
-                }
-            }
-            .navigationDestination(isPresented: $showingReset) {
-                resetView()
-                
-                Button("confirmReset") {
-                    confirmReset = true
-                }
-            .navigationDestination(isPresented: $confirmReset){
-                    
-                resetView()
-                }
-            {
-                    
-                }
-                {
-                    
-                }
-                    
-                    }
-                }
-            }
+                } //Close reset counter button
+            } //Close VStack view
+                .navigationDestination(isPresented: $showingReset) { //Show reset view
+                    resetView()
+                } //Close show reset view
+        } //Close navigation stack view
+    } //close View
+}
 
 
 
