@@ -13,21 +13,32 @@ struct resetView: View {
     @Binding var counterDisplay: String //Display counter
     var body: some View {
         VStack {
-            Button("Confirm reset") {
-                counterDisplay = "0"
-                counter = 0
-                dismiss()
+            Text("Are you sure you want to reset the counter?")
+            HStack {
+                Button("Confirm reset ") {
+                    counterDisplay = "0"
+                    counter = 0
+                    dismiss()
+                }
+                .buttonStyle(PlainButtonStyle())
+                .padding(.leading)
+                .foregroundColor(.white)
+                .background(Color.blue)
+                Button("Cancel") {
+                    dismiss()
+                    }
+                }
             }
         }
     }
-}
-#Preview {
-    struct Preview: View {
-        @State var count = 0
-        @State var stringCount = "0"
-        var body: some View {
-            resetView(counter: $count, counterDisplay: $stringCount)
+    #Preview {
+        struct Preview: View {
+            @State var count = 0
+            @State var stringCount = "0"
+            var body: some View {
+                resetView(counter: $count, counterDisplay: $stringCount)
+            }
         }
+        return Preview()
     }
-    return Preview()
-}
+
